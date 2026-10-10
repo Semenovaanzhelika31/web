@@ -16,7 +16,7 @@ spl_autoload_register(function ($className) {
 echo "<h1>Лабораторная работа №1</h1>";
 
 // Создание трех обычных пользователей
-$user1 = new User('Анжелика', 'anzhelika', 'pass123');
+$user1 = new User('Анжелика2', 'anzhelika', 'pass123');
 $user2 = new User('Иван', 'ivan', 'pass456');
 $user3 = new User('Мария', 'maria', 'pass789');
 
