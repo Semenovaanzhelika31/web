@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: FTP Deploy
-        uses: CreepySkeleton/Github-Action-FTP-Deploy@v1.0.0
+        uses: sebastianpopp/ftp-action@releases/v2
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /domains/f1316434.xsph.ru/public_html/
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: ./
+          remoteDir: /domains/f1316434.xsph.ru/public_html/
