@@ -12,6 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Удаляем файл состояния через curl (FTP)
+      - name: Delete sync state file
+        run: |
+          curl -v --ftp-method nocwd \
+            -u "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
+            "ftp://${{ secrets.FTP_SERVER }}/domains/f1316434.xsph.ru/public_html/.ftp-deploy-sync-state.json" \
+            -Q "DELE /domains/f1316434.xsph.ru/public_html/.ftp-deploy-sync-state.json" || true
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -23,4 +31,3 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
-            **/.ftp-deploy-sync-state.json
