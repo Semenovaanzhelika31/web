@@ -65,12 +65,12 @@ declare(strict_types=1);
 
     <div class="card">
         <a href="/lab1/users.php"> Лабораторная работа №1 — Классы и интерфейсы</a>
-        <div class="desc">Выполнение кода с классами User, SuperUser и статистикой</div>
     </div>
-
     <div class="card">
         <a href="/lab1/uml.html"> UML-диаграмма классов</a>
-        <div class="desc">Схема наследования и реализации интерфейсов</div>
+    </div>
+        <div class="card">
+        <a href="/lab1/users.php"> Лабораторная работа №2 — Шаблоны проектирования</a>
     </div>
 
     <div class="student-info">
