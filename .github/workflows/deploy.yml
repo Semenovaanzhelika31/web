@@ -19,4 +19,4 @@ jobs:
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: ./
-          remoteDir: /domains/f1316434.xsph.ru/public_html/
+          remoteDir: /public_html/
