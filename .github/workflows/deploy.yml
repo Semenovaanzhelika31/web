@@ -12,22 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Удаляем файл состояния через curl (FTP)
-      - name: Delete sync state file
-        run: |
-          curl -v --ftp-method nocwd \
-            -u "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
-            "ftp://${{ secrets.FTP_SERVER }}/domains/f1316434.xsph.ru/public_html/.ftp-deploy-sync-state.json" \
-            -Q "DELE /domains/f1316434.xsph.ru/public_html/.ftp-deploy-sync-state.json" || true
-
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: CreepySkeleton/Github-Action-FTP-Deploy@v1.0.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
           server-dir: /domains/f1316434.xsph.ru/public_html/
-          dangerous-clean-slate: true
-          exclude: |
-            **/.git*
-            **/.git*/**
