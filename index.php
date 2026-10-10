@@ -67,7 +67,7 @@ declare(strict_types=1);
 
     <div class="student-info">
         <p>Студент: Семенова Анжелика</p>
-        <p>Группа: [номер группы]</p>
+        <p>Группа: 31ПМ </p>
     </div>
 </body>
 </html>
