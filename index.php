@@ -25,49 +25,57 @@ declare(strict_types=1);
             border-bottom: 2px solid #4CAF50;
             padding-bottom: 10px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
+        .card {
             background-color: #fff;
-            margin: 10px 0;
-            padding: 15px 20px;
-            border-radius: 5px;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        li:hover {
-            transform: translateX(5px);
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
-        a {
+        .card a {
             color: #4CAF50;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
+            display: block;
         }
-        a:hover {
+        .card a:hover {
             color: #388E3C;
+        }
+        .card .desc {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
         }
         .student-info {
             color: #666;
             margin-top: 30px;
             font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Мои лабораторные работы</h1>
-    
-    <ul>
-        <li>
-            <a href="/lab1/index.php">Лабораторная работа №1 — Классы и интерфейсы</a>
-        </li>
-    </ul>
+    <h1> Мои лабораторные работы</h1>
+
+    <div class="card">
+        <a href="/lab1/index.php"> Лабораторная работа №1 — Классы и интерфейсы</a>
+        <div class="desc">Выполнение кода с классами User, SuperUser и статистикой</div>
+    </div>
+
+    <div class="card">
+        <a href="/lab1/uml.html"> UML-диаграмма классов</a>
+        <div class="desc">Схема наследования и реализации интерфейсов</div>
+    </div>
 
     <div class="student-info">
-        <p>Студент: Семенова Анжелика</p>
-        <p>Группа: 31ПМ </p>
+        Студент: Семенова Анжелика<br>
+        Группа: 31 ПМ
     </div>
 </body>
 </html>
