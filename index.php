@@ -64,7 +64,7 @@ declare(strict_types=1);
     <h1> Мои лабораторные работы</h1>
 
     <div class="card">
-        <a href="/lab1/index.php"> Лабораторная работа №1 — Классы и интерфейсы</a>
+        <a href="/lab1/users.php"> Лабораторная работа №1 — Классы и интерфейсы</a>
         <div class="desc">Выполнение кода с классами User, SuperUser и статистикой</div>
     </div>
 
