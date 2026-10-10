@@ -19,4 +19,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /domains/f1316434.xsph.ru/public_html/
-          log-level: verbose
+          dangerous-clean-slate: true
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.ftp-deploy-sync-state.json
