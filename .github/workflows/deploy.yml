@@ -19,6 +19,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /domains/f1316434.xsph.ru/public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
+          log-level: verbose
