@@ -1,0 +1,42 @@
+@startuml class-diagram
+  class "UserDecorator" as UserDecorator {
+    +user : 
+    +__construct(user)
+    +title()
+    +body()
+    +items()
+  }
+  class "UsersDecorator" as UsersDecorator {
+    +users : 
+    +__construct(users)
+    +title()
+    +collection_render(call, separator)
+    +body()
+    +items()
+  }
+  class "DecoratorFactory" as DecoratorFactory {
+    {static} +create(class, model, type)
+    {abstract} +title()
+    {abstract} +body()
+    {abstract} +items()
+  }
+  class "UsersMarkdownDecorator" as UsersMarkdownDecorator {
+    +users : 
+    +__construct(users)
+    +title()
+    +body()
+    +items()
+  }
+  class "UserMarkdownDecorator" as UserMarkdownDecorator {
+    -user : User
+    +__construct(user)
+    +title()
+    +body()
+    +items()
+  }
+  DecoratorFactory <|-- UserDecorator
+  DecoratorFactory <|-- UserMarkdownDecorator
+  DecoratorFactory <|-- UsersDecorator
+  DecoratorFactory <|-- UsersMarkdownDecorator
+  UsersDecorator ..> UserDecorator
+@enduml
