@@ -1,0 +1,43 @@
+@startuml class-diagram
+  class "ViewFactory" as ViewFactory {
+    {abstract} +render()
+    {static} +create(type, class, decorator)
+  }
+  class "UserMarkdownView" as UserMarkdownView {
+  }
+  class "UsersHtmlView" as UsersHtmlView {
+  }
+  class "UserRssView" as UserRssView {
+  }
+  class "RssView" as RssView {
+    #replacements : 
+    +__construct(decorator)
+    +render()
+  }
+  class "HtmlView" as HtmlView {
+    #replacements : 
+    +__construct(decorator)
+    +render()
+  }
+  class "UserHtmlView" as UserHtmlView {
+  }
+  class "UsersMarkdownView" as UsersMarkdownView {
+  }
+  class "MarkdownView" as MarkdownView {
+    -decorator : DecoratorFactory
+    +__construct(decorator)
+    +render()
+  }
+  class "UsersRssView" as UsersRssView {
+  }
+  HtmlView <|-- UserHtmlView
+  HtmlView <|-- UsersHtmlView
+  MarkdownView <|-- UserMarkdownView
+  MarkdownView <|-- UsersMarkdownView
+  RssView <|-- UserRssView
+  RssView <|-- UsersRssView
+  ViewFactory ..> ViewFactory
+  ViewFactory <|-- HtmlView
+  ViewFactory <|-- MarkdownView
+  ViewFactory <|-- RssView
+@enduml
