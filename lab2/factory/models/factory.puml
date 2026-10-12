@@ -1,0 +1,35 @@
+@startuml class-diagram
+  class "Page" as Page {
+    +title : string
+    +content : string
+    +__construct(title, content)
+    +render()
+  }
+  class "User" as User {
+    +email : string
+    -password : string
+    +first_name : ?string
+    +last_name : ?string
+    +__construct(email, password, first_name, last_name)
+    +render()
+  }
+  class "Users" as Users {
+    +users : ?array
+    +__construct(users)
+  }
+  class "Collection" as Collection {
+    +collection : ?array
+    +__construct(collection)
+    +renders()
+    +render()
+  }
+  class "Pages" as Pages {
+    +pages : ?array
+    +__construct(pages)
+    +render()
+  }
+  Collection <|-- Pages
+  Collection <|-- Users
+  Pages ..> Page
+  Users ..> User
+@enduml
