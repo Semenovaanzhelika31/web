@@ -1,11 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
-/**
- * Главная страница сайта.
- * Содержит список выполненных лабораторных работ.
- */
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -31,11 +26,10 @@ declare(strict_types=1);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: translateX(5px);
         }
         .card a {
             color: #4CAF50;
@@ -61,40 +55,18 @@ declare(strict_types=1);
     </style>
 </head>
 <body>
-    <h1> Мои лабораторные работы</h1>
+    <h1>Мои лабораторные работы</h1>
 
     <div class="card">
         <a href="/lab1/users.php"> Лабораторная работа №1 — Классы и интерфейсы</a>
     </div>
+
     <div class="card">
-        <a href="/lab1/uml.html"> UML-диаграмма классов</a>
-    </div>
-        <div class="card">
-        <a href="/lab1/users.php"> Лабораторная работа №2 — Шаблоны проектирования</a>
-    </div>
-    <div class="card">
-        <a href="/lab2/singleton/settings_use.php">🎯 Singleton (Одиночка)</a>
-        <div class="desc">Класс Settings с числовым, строковым и логическим значением</div>
+        <a href="/lab1/uml.html"> UML-диаграмма классов (лаба №1)</a>
     </div>
 
     <div class="card">
-        <a href="/lab2/factory/factory_use.php">🏭 Factory Method (Фабричный метод)</a>
-        <div class="desc">Вывод информации о 5 пользователях</div>
-    </div>
-
-    <div class="card">
-        <a href="/lab2/mvc_use.php">🎨 MVC (Модель-Представление-Контроллер)</a>
-        <div class="desc">HTML и Markdown представления</div>
-    </div>
-
-    <div class="card">
-        <a href="/lab2/singleton/singleton.png">📊 Диаграмма Singleton</a>
-    </div>
-    <div class="card">
-        <a href="/lab2/factory/factory.png">📊 Диаграмма Factory Method</a>
-    </div>
-    <div class="card">
-        <a href="/lab2/mvc/controllers/mvc_controllers.png">📊 Диаграмма MVC</a>
+        <a href="/lab2/"> Лабораторная работа №2 — Шаблоны проектирования</a>
     </div>
 
     <div class="student-info">
