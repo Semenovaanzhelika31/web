@@ -72,6 +72,30 @@ declare(strict_types=1);
         <div class="card">
         <a href="/lab1/users.php"> Лабораторная работа №2 — Шаблоны проектирования</a>
     </div>
+    <div class="card">
+        <a href="/lab2/singleton/settings_use.php">🎯 Singleton (Одиночка)</a>
+        <div class="desc">Класс Settings с числовым, строковым и логическим значением</div>
+    </div>
+
+    <div class="card">
+        <a href="/lab2/factory/factory_use.php">🏭 Factory Method (Фабричный метод)</a>
+        <div class="desc">Вывод информации о 5 пользователях</div>
+    </div>
+
+    <div class="card">
+        <a href="/lab2/mvc_use.php">🎨 MVC (Модель-Представление-Контроллер)</a>
+        <div class="desc">HTML и Markdown представления</div>
+    </div>
+
+    <div class="card">
+        <a href="/lab2/singleton/singleton.png">📊 Диаграмма Singleton</a>
+    </div>
+    <div class="card">
+        <a href="/lab2/factory/factory.png">📊 Диаграмма Factory Method</a>
+    </div>
+    <div class="card">
+        <a href="/lab2/mvc/controllers/mvc_controllers.png">📊 Диаграмма MVC</a>
+    </div>
 
     <div class="student-info">
         Студент: Семенова Анжелика<br>
