@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Singleton;
 
 final class Settings
 {
-    private static ?Settings $_object;
-    private ?array $_settings;
+    private static ?Settings $_object = null;
+    private ?array $_settings = null;
 
     private function __construct()
     {
-        $_settings = [];
+        $this->_settings = [];
     }
 
     private function __clone() {}
