@@ -26,9 +26,8 @@ final class Settings
     {
         if (array_key_exists($key, $this->_settings)) {
             return $this->_settings[$key];
-        } else {
-            return null;
         }
+        return null;
     }
 
     public function __set($key, $value) : void
