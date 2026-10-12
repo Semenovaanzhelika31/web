@@ -1,12 +1,18 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 declare(strict_types=1);
 
 spl_autoload_register(function ($className) {
     $shortName = substr($className, strrpos($className, '\\') + 1);
-    $file = __DIR__ . '/' . $shortName . '.php';
+    $file = __DIR__ . '/' . strtolower($shortName) . '.php';
+
     if (file_exists($file)) {
         require_once $file;
+    } else {
+        echo "Не найден файл: " . $file . "<br>";
     }
 });
 
