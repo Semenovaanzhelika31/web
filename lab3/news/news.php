@@ -1,5 +1,13 @@
 <?php
 
+require_once __DIR__ . '/NewsDB.class.php';
+
+$news = new NewsDB();
+$errMsg = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/save_news.inc.php';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,9 +17,11 @@
 </head>
 <body>
   <h1>Последние новости</h1>
-  <?php
 
-  ?>
+  <?php if ($errMsg !== ''): ?>
+    <div style="color: red; font-weight: bold;"><?= htmlspecialchars($errMsg) ?></div>
+  <?php endif; ?>
+
   <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
     Заголовок новости:<br>
     <input type="text" name="title"><br>
@@ -29,8 +39,5 @@
     <br>
     <input type="submit" value="Добавить!">
   </form>
-  <?php
-
-  ?>
 </body>
 </html>
