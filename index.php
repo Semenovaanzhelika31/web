@@ -74,12 +74,10 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/?lab=1">Лабораторная работа №1 — Классы и интерфейсы</a>
-        <div class="desc">Классы User, SuperUser, абстрактные классы, интерфейсы</div>
     </div>
 
     <div class="card">
         <a href="/?lab=2">Лабораторная работа №2 — Шаблоны проектирования</a>
-        <div class="desc">Singleton, Factory Method, MVC и диаграммы</div>
     </div>
 
     <div class="student-info">
@@ -92,12 +90,10 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/lab1/users.php">Код лабораторной работы №1</a>
-        <div class="desc">Классы User, SuperUser, вывод пользователей и статистики</div>
     </div>
 
     <div class="card">
         <a href="/lab1/uml.html">UML-диаграмма классов</a>
-        <div class="desc">Схема наследования и реализации интерфейсов</div>
     </div>
 
     <a class="back" href="/">Вернуться на главную</a>
@@ -105,19 +101,17 @@ $lab = $_GET['lab'] ?? null;
 <?php elseif ($lab === '2'): ?>
     <h1>Лабораторная работа №2 — Шаблоны проектирования</h1>
 
-    <h2>1. Singleton (Одиночка)</h2>
+    <h2>1. Singleton</h2>
     <div class="card">
         <a href="/lab2/singleton/settings_use.php">Пример использования Singleton</a>
-        <div class="desc">Числовое, строковое и логическое значение</div>
     </div>
     <div class="card">
         <a href="/lab2/singleton/singleton.png">Диаграмма Singleton</a>
     </div>
 
-    <h2>2. Factory Method (Фабричный метод)</h2>
+    <h2>2. Factory Method</h2>
     <div class="card">
         <a href="/lab2/factory/factory_use.php">Пример использования Factory Method</a>
-        <div class="desc">Вывод 5 пользователей</div>
     </div>
     <div class="card">
         <a href="/lab2/factory/factory.png">Диаграмма Factory Method</a>
@@ -126,7 +120,6 @@ $lab = $_GET['lab'] ?? null;
     <h2>3. MVC (Модель-Представление-Контроллер)</h2>
     <div class="card">
         <a href="/lab2/mvc/mvc_use.php">Пример использования MVC</a>
-        <div class="desc">HTML и Markdown представления</div>
     </div>
     <div class="card">
         <a href="/lab2/mvc/controllers/mvc_controllers.png">Диаграмма MVC — контроллеры</a>
