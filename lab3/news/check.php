@@ -25,8 +25,14 @@ $result = $db->query("SELECT COUNT(*) as cnt FROM msgs");
 $row = $result->fetchArray();
 echo "Всего: " . $row['cnt'] . "<br>";
 
-echo "<h2>Новости:</h2>";
-$result = $db->query("SELECT * FROM msgs ORDER BY id DESC");
+echo "<h2>Новости в базе:</h2>";
+$result = $db->query("SELECT id, title, category, description, source, datetime FROM msgs ORDER BY id DESC");
 while ($row = $result->fetchArray()) {
-    echo "ID: " . $row['id'] . " — " . $row['title'] . " (" . $row['source'] . ")<br>";
+    echo "<strong>ID:</strong> " . $row['id'] . "<br>";
+    echo "<strong>Заголовок:</strong> " . $row['title'] . "<br>";
+    echo "<strong>Категория:</strong> " . $row['category'] . "<br>";
+    echo "<strong>Текст:</strong> " . $row['description'] . "<br>";
+    echo "<strong>Источник:</strong> " . $row['source'] . "<br>";
+    echo "<strong>Дата:</strong> " . date('d.m.Y H:i', $row['datetime']) . "<br>";
+    echo "<hr>";
 }
