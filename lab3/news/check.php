@@ -24,3 +24,9 @@ echo "<h2>Записей в msgs:</h2>";
 $result = $db->query("SELECT COUNT(*) as cnt FROM msgs");
 $row = $result->fetchArray();
 echo "Всего: " . $row['cnt'] . "<br>";
+
+echo "<h2>Новости:</h2>";
+$result = $db->query("SELECT * FROM msgs ORDER BY id DESC");
+while ($row = $result->fetchArray()) {
+    echo "ID: " . $row['id'] . " — " . $row['title'] . " (" . $row['source'] . ")<br>";
+}
