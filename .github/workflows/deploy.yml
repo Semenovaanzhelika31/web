@@ -20,4 +20,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: ./
           remoteDir: /public_html/
-          options: --exclude=lab3/*** --exclude=.git/*** --exclude=.github/***
