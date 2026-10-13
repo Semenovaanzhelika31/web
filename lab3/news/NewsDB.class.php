@@ -1,20 +1,53 @@
 <?php
 
-echo "Шаг 1: PHP работает<br>";
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-echo "Шаг 2: error_reporting установлен<br>";
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/debug.log');
 
-require_once __DIR__ . '/INewsDB.class.php';
-echo "Шаг 3: INewsDB подключён<br>";
+file_put_contents(__DIR__ . '/debug.log', date('Y-m-d H:i:s') . " — старт\n", FILE_APPEND);
 
-echo "Шаг 4: SQLite3 доступен? " . (class_exists('SQLite3') ? 'Да' : 'Нет') . "<br>";
+try {
+    file_put_contents(__DIR__ . '/debug.log', "шаг 1: PHP работает\n", FILE_APPEND);
 
-$db = new SQLite3('/tmp/test_news.db');
-echo "Шаг 5: объект SQLite3 создан<br>";
+    require_once __DIR__ . '/INewsDB.class.php';
+    file_put_contents(__DIR__ . '/debug.log', "шаг 2: INewsDB подключён\n", FILE_APPEND);
 
-$db->exec("CREATE TABLE test(id INTEGER)");
-echo "Шаг 6: таблица создана<br>";
+    if (!class_exists('SQLite3')) {
+        throw new Exception("SQLite3 не найден");
+    }
+    file_put_contents(__DIR__ . '/debug.log', "шаг 3: SQLite3 есть\n", FILE_APPEND);
 
-unset($db);
-echo "Шаг 7: всё работает!<br>";
+    $dbPath = __DIR__ . '/news.db';
+    file_put_contents(__DIR__ . '/debug.log', "шаг 4: путь = {$dbPath}\n", FILE_APPEND);
+
+    $db = new SQLite3($dbPath);
+    file_put_contents(__DIR__ . '/debug.log', "шаг 5: SQLite3 создан\n", FILE_APPEND);
+
+    $db->exec("CREATE TABLE msgs(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        category INTEGER,
+        description TEXT,
+        source TEXT,
+        datetime INTEGER
+    )");
+    file_put_contents(__DIR__ . '/debug.log', "шаг 6: таблица msgs создана\n", FILE_APPEND);
+
+    $db->exec("CREATE TABLE category(id INTEGER, name TEXT)");
+    file_put_contents(__DIR__ . '/debug.log', "шаг 7: таблица category создана\n", FILE_APPEND);
+
+    $db->exec("INSERT INTO category(id, name)
+        SELECT 1, 'Политика'
+        UNION SELECT 2, 'Культура'
+        UNION SELECT 3, 'Спорт'");
+    file_put_contents(__DIR__ . '/debug.log', "шаг 8: категории добавлены\n", FILE_APPEND);
+
+    file_put_contents(__DIR__ . '/debug.log', "шаг 9: файл news.db существует? " . (file_exists($dbPath) ? 'да' : 'нет') . ", размер " . (file_exists($dbPath) ? filesize($dbPath) : 0) . "\n", FILE_APPEND);
+
+    unset($db);
+    file_put_contents(__DIR__ . '/debug.log', "шаг 10: готово\n", FILE_APPEND);
+
+} catch (Throwable $e) {
+    file_put_contents(__DIR__ . '/debug.log', "ОШИБКА: " . $e->getMessage() . " в " . $e->getFile() . ":" . $e->getLine() . "\n", FILE_APPEND);
+}
