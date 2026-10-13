@@ -1,0 +1,18 @@
+@startuml class-diagram
+  class "Router" as Router {
+    +model : string
+    +ext : ?string
+    +id : ?int
+    {static} +parse(path)
+    -__construct(model, ext, id)
+  }
+  class "Controller" as Controller {
+    +path : string
+    +router : Router
+    +model : object
+    +__construct(path)
+    +render()
+  }
+  Controller ..> Router
+  Router ..> Router
+@enduml
