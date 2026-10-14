@@ -70,24 +70,30 @@ class NewsDB implements INewsDB
                 FROM msgs, category
                 WHERE category.id = msgs.category
                 ORDER BY msgs.id DESC";
-    
+
         $result = $this->_db->query($sql);
-    
+
         if ($result === false) {
             return false;
         }
-    
+
         $news = [];
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $news[] = $row;
         }
-    
+
         return $news;
     }
 
-
     public function deleteNews($id)
     {
-        return true;
+        $sql = "DELETE FROM msgs WHERE id = :id";
+
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindValue(':id', (int)$id, SQLITE3_INTEGER);
+
+        $result = $stmt->execute();
+
+        return $result !== false;
     }
 }
