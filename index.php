@@ -80,6 +80,10 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=2">Лабораторная работа №2 — Шаблоны проектирования</a>
     </div>
 
+    <div class="card">
+        <a href="/?lab=3">Лабораторная работа №3 — Веб-приложение news</a>
+    </div>
+
     <div class="student-info">
         Студент: Семенова Анжелика<br>
         Группа: 31 ПМ
@@ -132,6 +136,19 @@ $lab = $_GET['lab'] ?? null;
     </div>
     <div class="card">
         <a href="/lab2/mvc/views/mvc_views.png">Диаграмма MVC — представления</a>
+    </div>
+
+    <a class="back" href="/">Вернуться на главную</a>
+
+<?php elseif ($lab === '3'): ?>
+    <h1>Лабораторная работа №3 — Веб-приложение news</h1>
+
+    <div class="card">
+        <a href="/lab3/news/news.php">Приложение «Новостная лента»</a>
+    </div>
+
+    <div class="card">
+        <a href="/lab3/news/uml.png">UML-диаграмма классов приложения</a>
     </div>
 
     <a class="back" href="/">Вернуться на главную</a>
