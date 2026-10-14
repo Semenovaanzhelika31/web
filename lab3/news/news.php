@@ -39,5 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br>
     <input type="submit" value="Добавить!">
   </form>
+
+  <?php require_once __DIR__ . '/get_news.inc.php'; ?>
 </body>
 </html>
