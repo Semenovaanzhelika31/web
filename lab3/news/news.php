@@ -6,12 +6,7 @@ $news = new NewsDB();
 $errMsg = '';
 
 if (isset($_GET['id'])) {
-    if ($news->deleteNews((int)$_GET['id'])) {
-        header('Location: news.php');
-        exit;
-    } else {
-        $errMsg = 'Произошла ошибка при удалении новости';
-    }
+    require_once __DIR__ . '/delete_news.inc.php';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
