@@ -5,6 +5,15 @@ require_once __DIR__ . '/NewsDB.class.php';
 $news = new NewsDB();
 $errMsg = '';
 
+if (isset($_GET['id'])) {
+    if ($news->deleteNews((int)$_GET['id'])) {
+        header('Location: news.php');
+        exit;
+    } else {
+        $errMsg = 'Произошла ошибка при удалении новости';
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once __DIR__ . '/save_news.inc.php';
 }
