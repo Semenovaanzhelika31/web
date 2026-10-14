@@ -45,5 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </form>
 
   <?php require_once __DIR__ . '/get_news.inc.php'; ?>
+
+  <hr>
+  <h2>UML-диаграмма классов</h2>
+  <img src="uml.png" alt="Диаграмма классов приложения news" style="max-width: 100%; height: auto;">
 </body>
 </html>
