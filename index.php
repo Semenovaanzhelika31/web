@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require __DIR__ . '/lab4/NumbersSquared.php';
+
 $lab = $_GET['lab'] ?? null;
 ?>
 <!DOCTYPE html>
@@ -65,6 +67,18 @@ $lab = $_GET['lab'] ?? null;
             font-size: 14px;
             text-align: center;
         }
+        /* Стили для красивого вывода кода 4-й лабы */
+        .result-box {
+            background-color: #fff;
+            padding: 18px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 12px;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +96,11 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/?lab=3">Лабораторная работа №3 — Веб-приложение news</a>
+    </div>
+
+    <!-- ДОБАВЛЕНА 4 ЛАБА В МЕНЮ -->
+    <div class="card">
+        <a href="/?lab=4">Лабораторная работа №4 — Standard PHP Library</a>
     </div>
 
     <div class="student-info">
@@ -149,6 +168,32 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/lab3/news/uml.png">UML-диаграмма классов приложения</a>
+    </div>
+
+    <a class="back" href="/">Вернуться на главную</a>
+
+<!-- ДОБАВЛЕН БЛОК ДЛЯ 4 ЛАБЫ -->
+<?php elseif ($lab === '4'): ?>
+    <h1>Лабораторная работа №4 — Standard PHP Library</h1>
+
+    <h2>Демонстрация работы итератора NumbersSquared</h2>
+    <p>Класс <code>NumbersSquared</code> реализует интерфейс <code>Iterator</code>
+    и возвращает квадраты чисел в диапазоне от 3 до 7:</p>
+
+    <div class="result-box">
+        <?php
+        // Класс уже подключен в начале файла, поэтому мы можем его использовать
+        $obj = new NumbersSquared(3, 7);
+        
+        foreach ($obj as $num => $square) {
+            echo "Квадрат числа $num = $square<br>";
+        }
+        ?>
+    </div>
+
+    <!-- Карточка для скачивания класса (по желанию) -->
+    <div class="card">
+        <a href="/lab4/NumbersSquared.php">Исходный код класса NumbersSquared.php</a>
     </div>
 
     <a class="back" href="/">Вернуться на главную</a>
