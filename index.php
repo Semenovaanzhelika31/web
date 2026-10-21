@@ -182,7 +182,7 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="result-box">
         <?php
-        // Класс уже подключен в начале файла, поэтому мы можем его использовать
+        // Класс уже подключен в начале файла
         $obj = new NumbersSquared(3, 7);
         
         foreach ($obj as $num => $square) {
@@ -191,18 +191,18 @@ $lab = $_GET['lab'] ?? null;
         ?>
     </div>
 
-    <!-- Карточка для скачивания класса (по желанию) -->
+    <h2>Материалы к работе</h2>
+    
+    <!-- Карточка с UML-диаграммой -->
     <div class="card">
-        <a href="/lab4/NumbersSquared.php">Исходный код класса NumbersSquared.php</a>
+        <a href="/lab4/diagram.png" target="_blank">UML-диаграмма классов (PlantUML)</a>
+    </div>
+
+    <!-- Карточка со скачиванием класса -->
+    <div class="card">
+        <a href="/lab4/NumbersSquared.php" download>Скачать исходный код класса NumbersSquared.php</a>
     </div>
 
     <a class="back" href="/">Вернуться на главную</a>
 
 <?php else: ?>
-    <h1>Страница не найдена</h1>
-    <p>Такой лабораторной работы нет.</p>
-    <a class="back" href="/">Вернуться на главную</a>
-<?php endif; ?>
-
-</body>
-</html>
