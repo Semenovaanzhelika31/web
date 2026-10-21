@@ -98,7 +98,6 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=3">Лабораторная работа №3 — Веб-приложение news</a>
     </div>
 
-    <!-- ДОБАВЛЕНА 4 ЛАБА В МЕНЮ -->
     <div class="card">
         <a href="/?lab=4">Лабораторная работа №4 — Standard PHP Library</a>
     </div>
@@ -172,7 +171,6 @@ $lab = $_GET['lab'] ?? null;
 
     <a class="back" href="/">Вернуться на главную</a>
 
-<!-- ДОБАВЛЕН БЛОК ДЛЯ 4 ЛАБЫ -->
 <?php elseif ($lab === '4'): ?>
     <h1>Лабораторная работа №4 — Standard PHP Library</h1>
 
@@ -182,7 +180,6 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="result-box">
         <?php
-        // Класс уже подключен в начале файла
         $obj = new NumbersSquared(3, 7);
         
         foreach ($obj as $num => $square) {
@@ -193,12 +190,10 @@ $lab = $_GET['lab'] ?? null;
 
     <h2>Материалы к работе</h2>
     
-    <!-- Карточка с UML-диаграммой -->
     <div class="card">
         <a href="/lab4/diagram.png" target="_blank">UML-диаграмма классов (PlantUML)</a>
     </div>
 
-    <!-- Карточка со скачиванием класса -->
     <div class="card">
         <a href="/lab4/NumbersSquared.php" download>Скачать исходный код класса NumbersSquared.php</a>
     </div>
@@ -206,3 +201,10 @@ $lab = $_GET['lab'] ?? null;
     <a class="back" href="/">Вернуться на главную</a>
 
 <?php else: ?>
+    <h1>Страница не найдена</h1>
+    <p>Такой лабораторной работы нет.</p>
+    <a class="back" href="/">Вернуться на главную</a>
+<?php endif; ?>
+
+</body>
+</html>
