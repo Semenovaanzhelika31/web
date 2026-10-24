@@ -15,7 +15,6 @@ use MyProject\Classes\SuperUser;
 $user1 = new User('Иван', 'ivan', '123');
 $user2 = new User('Петр', 'petr', '456');
 $user3 = new User('Анна', 'anna', '789');
-
 $user4 = new SuperUser('Админ', 'admin', 'root', 'Главный администратор');
 
 $user1->showInfo();
@@ -24,7 +23,6 @@ $user3->showInfo();
 $user4->showInfo();
 
 echo "<hr>";
-echo "<strong>Данные getInfo() для SuperUser:</strong><br>";
 echo "<pre>";
 print_r($user4->getInfo());
 echo "</pre>";
