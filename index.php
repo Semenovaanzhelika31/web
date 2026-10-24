@@ -181,9 +181,8 @@ $lab = $_GET['lab'] ?? null;
     <div class="result-box">
         <?php
         $obj = new NumbersSquared(3, 7);
-        
         foreach ($obj as $num => $square) {
-            echo "Квадрат числа $num = $square<br>";
+            echo "Квадрат числа $num<sup>2</sup> = $square<br>";
         }
         ?>
     </div>
