@@ -3,11 +3,9 @@
 declare(strict_types=1);
 
 spl_autoload_register(function ($class) {
-    $class = str_replace('MyProject\\Classes\\', '', $class);
-    $file = __DIR__ . '/MyProject/Classes/' . $class . '.php';
-    
-    if (file_exists($file)) {
-        require_once $file;
+    $path = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($path)) {
+        require_once $path;
     }
 });
 
@@ -26,12 +24,10 @@ $user3->showInfo();
 $user4->showInfo();
 
 echo "<hr>";
-
 echo "<strong>Данные getInfo() для SuperUser:</strong><br>";
 echo "<pre>";
 print_r($user4->getInfo());
 echo "</pre>";
-
 echo "<hr>";
 
 echo "Всего обычных пользователей: " . User::$userCount . "<br>";
