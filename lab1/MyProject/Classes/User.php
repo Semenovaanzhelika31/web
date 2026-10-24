@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace MyProject\Classes;
 
-require_once __DIR__ . '/AbstractUser.php';
-
 class User extends AbstractUser
 {
     public string $name;
     public string $login;
     private string $password;
-
     public static int $userCount = 0;
 
     public function __construct(string $name, string $login, string $password)
@@ -19,8 +16,7 @@ class User extends AbstractUser
         $this->name = $name;
         $this->login = $login;
         $this->password = $password;
-        
-        static::$userCount++;
+        self::$userCount++;
     }
 
     public function __destruct()
