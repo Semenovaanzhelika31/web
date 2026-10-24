@@ -10,7 +10,7 @@ class User {
   + string name
   + string login
   - string password
-  + static int userCount
+  + {static} int userCount
   + __construct(name, login, password)
   + __destruct()
   + showInfo(): void
@@ -22,7 +22,7 @@ interface SuperUserInterface {
 
 class SuperUser {
   + string role
-  + static int superUserCount
+  + {static} int superUserCount
   + __construct(name, login, password, role)
   + showInfo(): void
   + getInfo(): array
