@@ -2,40 +2,37 @@
 
 declare(strict_types=1);
 
-use MyProject\Classes\User;
-use MyProject\Classes\SuperUser;
-
-spl_autoload_register(function ($className) {
-    $file = __DIR__ . '/' . str_replace('\\', '/', $className) . '.php';
+spl_autoload_register(function ($class) {
+    $class = str_replace('MyProject\\Classes\\', '', $class);
+    $file = __DIR__ . '/MyProject/Classes/' . $class . '.php';
+    
     if (file_exists($file)) {
         require_once $file;
     }
 });
 
-echo "<h1>Лабораторная работа №1</h1>";
+use MyProject\Classes\User;
+use MyProject\Classes\SuperUser;
 
-$user1 = new User('Анжелика тест', 'anzhelika', 'pass123');
-$user2 = new User('Иван', 'ivan', 'pass456');
-$user3 = new User('Мария', 'maria', 'pass789');
+$user1 = new User('Иван', 'ivan', '123');
+$user2 = new User('Петр', 'petr', '456');
+$user3 = new User('Анна', 'anna', '789');
+
+$user4 = new SuperUser('Админ', 'admin', 'root', 'Главный администратор');
 
 $user1->showInfo();
 $user2->showInfo();
 $user3->showInfo();
+$user4->showInfo();
 
 echo "<hr>";
 
-$superUser = new SuperUser('Админ', 'admin', 'adminpass', 'Администратор');
-$superUser->showInfo();
-
-echo "<hr>";
-
-echo "<h3>Информация о супер-пользователе (getInfo):</h3>";
+echo "<strong>Данные getInfo() для SuperUser:</strong><br>";
 echo "<pre>";
-print_r($superUser->getInfo());
+print_r($user4->getInfo());
 echo "</pre>";
 
 echo "<hr>";
 
-echo "<h3>Статистика:</h3>";
 echo "Всего обычных пользователей: " . User::$userCount . "<br>";
 echo "Всего супер-пользователей: " . SuperUser::$superUserCount . "<br>";
