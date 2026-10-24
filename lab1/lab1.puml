@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+
+abstract class AbstractUser {
+  + showInfo(): void
+}
+
+class User {
+  + string name
+  + string login
+  - string password
+  + static int userCount
+  + __construct(name, login, password)
+  + __destruct()
+  + showInfo(): void
+}
+
+interface SuperUserInterface {
+  + getInfo(): array
+}
+
+class SuperUser {
+  + string role
+  + static int superUserCount
+  + __construct(name, login, password, role)
+  + showInfo(): void
+  + getInfo(): array
+}
+
+AbstractUser <|-- User
+User <|-- SuperUser
+SuperUserInterface <|.. SuperUser
+@enduml
