@@ -15,12 +15,13 @@ class SuperUser extends User implements SuperUserInterface
 
     public function __construct(string $name, string $login, string $password, string $role)
     {
+
         parent::__construct($name, $login, $password);
         
         $this->role = $role;
         
-        // Увеличиваем свой счетчик
         self::$superUserCount++;
+        
     }
 
     public function showInfo(): void
