@@ -12,7 +12,6 @@ class User extends AbstractUser
     public string $login;
     private string $password;
 
-    // Счётчик созданных экземпляров
     public static int $userCount = 0;
 
     public function __construct(string $name, string $login, string $password)
@@ -21,7 +20,6 @@ class User extends AbstractUser
         $this->login = $login;
         $this->password = $password;
         
-        // ИСПОЛЬЗУЕМ static::, чтобы счетчик правильно работал и для наследников
         static::$userCount++;
     }
 
