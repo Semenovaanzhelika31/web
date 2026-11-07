@@ -1,0 +1,41 @@
+@startuml
+interface INewsDB {
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+}
+
+interface IteratorAggregate {
+  +getIterator(): Traversable
+}
+
+class ArrayIterator
+class DOMDocument
+class PDO
+class PDOException
+
+class NewsDB {
+  {static} +DB_NAME: string
+  {static} +RSS_NAME: string
+  {static} +RSS_TITLE: string
+  {static} +RSS_LINK: string
+  -_db: PDO
+  -items: array
+  +__construct()
+  +__destruct()
+  -logError(e: PDOException): void
+  -getCategories(): void
+  +getIterator(): ArrayIterator
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+  -createRss(): void
+}
+
+INewsDB <|.. NewsDB
+IteratorAggregate <|.. NewsDB
+NewsDB ..> ArrayIterator : creates
+NewsDB ..> DOMDocument : creates
+NewsDB ..> PDOException : catches
+NewsDB --> PDO : _db
+@enduml

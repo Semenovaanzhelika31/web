@@ -106,6 +106,10 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=5">Лабораторная работа №5 — Работа с XML (RSS)</a>
     </div>
 
+    <div class="card">
+        <a href="/?lab=6">Лабораторная работа №6 — PHP Data Objects</a>
+    </div>
+
     <div class="student-info">
         Студент: Семенова Анжелика<br>
         Группа: 31 ПМ
@@ -213,6 +217,19 @@ $lab = $_GET['lab'] ?? null;
     <div class="card">
         <a href="/lab5/rss.xml" target="_blank">Файл rss.xml</a>
     </div>
+
+
+    <?php elseif ($lab === '6'): ?>
+    <h1>Лабораторная работа №6 — PHP Data Objects</h1>
+
+    <div class="card">
+        <a href="/lab6/news.php">Приложение «Новостная лента» на PDO</a>
+    </div>
+
+    <div class="card">
+        <a href="/lab6/rss.xml" target="_blank">Файл rss.xml</a>
+    </div>
+
 
     <a class="back" href="/">Вернуться на главную</a>
 

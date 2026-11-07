@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Последние новости</title>
+    <link>http://localhost/lab3/news/news.php</link>
+    <item>
+      <title>cvbnm</title>
+      <link>http://localhost/lab3/news/news.php?id=1</link>
+      <description><![CDATA[vbhjklmnb]]></description>
+      <pubDate>Sat, 07 Nov 2026 07:58:00 +0000</pubDate>
+      <category>Политика</category>
+    </item>
+  </channel>
+</rss>
