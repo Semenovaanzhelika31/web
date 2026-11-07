@@ -3,14 +3,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 spl_autoload_register(function ($className) {
-    $path = str_replace('\\', '/', $className);    
-    $parts = explode('/', $path);
-    $parts = array_map('lcfirst', $parts);
-    $relativePath = implode('/', $parts) . '.php';
-
+    $className = ltrim($className, '\\');
+    $path = str_replace('\\', '/', $className);
+    
     $possiblePaths = [
-        __DIR__ . '/' . $relativePath,                      
-        __DIR__ . '/../' . $relativePath,                   
+        __DIR__ . '/' . $path . '.php',
+        __DIR__ . '/' . strtolower($path) . '.php',
+        __DIR__ . '/../' . $path . '.php',
+        __DIR__ . '/../' . strtolower($path) . '.php',
     ];
 
     foreach ($possiblePaths as $file) {
