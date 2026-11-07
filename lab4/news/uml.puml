@@ -1,0 +1,32 @@
+@startuml
+interface INewsDB {
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+}
+
+interface IteratorAggregate {
+  +getIterator(): Traversable
+}
+
+class ArrayIterator
+class SQLite3
+
+class NewsDB {
+  {static} +DB_NAME: string
+  -_db: SQLite3
+  -items: array
+  +__construct()
+  +__destruct()
+  -getCategories(): void
+  +getIterator(): ArrayIterator
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+}
+
+INewsDB <|.. NewsDB
+IteratorAggregate <|.. NewsDB
+NewsDB ..> ArrayIterator : creates
+NewsDB --> SQLite3 : _db
+@enduml
