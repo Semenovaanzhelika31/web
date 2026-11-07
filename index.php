@@ -200,17 +200,25 @@ $lab = $_GET['lab'] ?? null;
     </div>
 
     <h2>Материалы к работе</h2>
-    
+
     <div class="card">
-        <a href="/lab4/diagram.png" target="_blank">UML-диаграмма классов (PlantUML)</a>
+        <a href="/lab4/diagram.png" target="_blank">UML-диаграмма классов NumbersSquared (PlantUML)</a>
     </div>
 
     <div class="card">
         <a href="/lab4/NumbersSquared.php" download>Скачать исходный код класса NumbersSquared.php</a>
     </div>
 
-    <a class="back" href="/">Вернуться на главную</a>
+    <h2>Приложение news (IteratorAggregate)</h2>
 
+    <div class="card">
+        <a href="/lab4/news/news.php">Приложение «Новостная лента» (категории через итератор)</a>
+    </div>
+
+    <div class="card">
+        <a href="/lab4/news/uml.png" target="_blank">UML-диаграмма классов приложения news (дополненная)</a>
+    </div>
+    
     <?php elseif ($lab === '5'): ?>
     <h1>Лабораторная работа №5 — Работа с XML (RSS)</h1>
 
