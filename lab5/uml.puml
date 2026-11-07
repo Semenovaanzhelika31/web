@@ -1,0 +1,38 @@
+@startuml
+interface INewsDB {
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+}
+
+interface IteratorAggregate {
+  +getIterator(): Traversable
+}
+
+class ArrayIterator
+class DOMDocument
+class SQLite3
+
+class NewsDB {
+  {static} +DB_NAME: string
+  {static} +RSS_NAME: string
+  {static} +RSS_TITLE: string
+  {static} +RSS_LINK: string
+  -_db: SQLite3
+  -items: array
+  +__construct()
+  +__destruct()
+  -getCategories(): void
+  +getIterator(): ArrayIterator
+  +saveNews(title, category, description, source)
+  +getNews()
+  +deleteNews(id)
+  -createRss(): void
+}
+
+INewsDB <|.. NewsDB
+IteratorAggregate <|.. NewsDB
+NewsDB ..> ArrayIterator : creates
+NewsDB ..> DOMDocument : creates
+NewsDB --> SQLite3 : _db
+@enduml

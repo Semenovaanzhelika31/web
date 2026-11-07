@@ -102,6 +102,10 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=4">Лабораторная работа №4 — Standard PHP Library</a>
     </div>
 
+    <div class="card">
+        <a href="/?lab=5">Лабораторная работа №5 — Работа с XML (RSS)</a>
+    </div>
+
     <div class="student-info">
         Студент: Семенова Анжелика<br>
         Группа: 31 ПМ
@@ -195,6 +199,19 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/lab4/NumbersSquared.php" download>Скачать исходный код класса NumbersSquared.php</a>
+    </div>
+
+    <a class="back" href="/">Вернуться на главную</a>
+
+    <?php elseif ($lab === '5'): ?>
+    <h1>Лабораторная работа №5 — Работа с XML (RSS)</h1>
+
+    <div class="card">
+        <a href="/lab5/news.php">Приложение «Новостная лента» с генерацией RSS</a>
+    </div>
+
+    <div class="card">
+        <a href="/lab5/rss.xml" target="_blank">Файл rss.xml</a>
     </div>
 
     <a class="back" href="/">Вернуться на главную</a>
