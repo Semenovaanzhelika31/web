@@ -2,24 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-spl_autoload_register(function ($className) {
-    $className = ltrim($className, '\\');
-    $path = str_replace('\\', '/', $className);
-    
-    $possiblePaths = [
-        __DIR__ . '/' . $path . '.php',
-        __DIR__ . '/' . strtolower($path) . '.php',
-        __DIR__ . '/../' . $path . '.php',
-        __DIR__ . '/../' . strtolower($path) . '.php',
-    ];
-
-    foreach ($possiblePaths as $file) {
-        if (file_exists($file)) {
-            require_once $file;
-            return;
-        }
-    }
-});
+spl_autoload_register();
 
 use MVC\Controllers\Controller;
 
