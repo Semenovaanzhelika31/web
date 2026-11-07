@@ -141,7 +141,7 @@ $lab = $_GET['lab'] ?? null;
 
     <h2>3. MVC</h2>
     <div class="card">
-        <a href="/lab2/mvc/mvc_use.php">Пример использования MVC</a>
+        <a href="/lab2/mvc_use.php">Пример использования MVC</a>
     </div>
     <div class="card">
         <a href="/lab2/mvc/controllers/mvc_controllers.png">Диаграмма MVC — контроллеры</a>
