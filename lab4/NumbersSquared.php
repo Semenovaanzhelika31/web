@@ -12,6 +12,7 @@ class NumbersSquared implements Iterator
     {
         $this->start = $start;
         $this->end = $end;
+        $this->current = $start;
     }
 
     public function rewind(): void

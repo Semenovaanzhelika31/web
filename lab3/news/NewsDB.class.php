@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/INewsDB.class.php';
 
-class NewsDB implements INewsDB
+class NewsDB implements INewsDB, IteratorAggregate
 {
     const DB_NAME = 'news.db';
 
     private SQLite3 $_db;
+    private array $items = [];
 
     public function __construct()
     {
@@ -38,11 +39,33 @@ class NewsDB implements INewsDB
                 UNION SELECT 2, 'Культура'
                 UNION SELECT 3, 'Спорт'");
         }
+
+        $this->getCategories();
     }
 
     public function __destruct()
     {
         unset($this->_db);
+    }
+
+    private function getCategories(): void
+    {
+        $sql = "SELECT id, name FROM category";
+
+        $result = $this->_db->query($sql);
+
+        if ($result === false) {
+            return;
+        }
+
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $this->items[$row['id']] = $row['name'];
+        }
+    }
+
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->items);
     }
 
     public function saveNews($title, $category, $description, $source)
