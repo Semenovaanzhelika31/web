@@ -31,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="title"><br>
     Выберите категорию:<br>
     <select name="category">
-      <?php foreach ($news as $id => $name): ?>
-        <option value="<?= $id ?>"><?= htmlspecialchars($name) ?></option>
-      <?php endforeach; ?>
+      <option value="1">Политика</option>
+      <option value="2">Культура</option>
+      <option value="3">Спорт</option>
     </select>
     <br />
     Текст новости:<br>

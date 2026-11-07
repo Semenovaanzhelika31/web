@@ -1,0 +1,53 @@
+<?php
+
+require_once __DIR__ . '/NewsDB.class.php';
+
+$news = new NewsDB();
+$errMsg = '';
+
+if (isset($_GET['id'])) {
+    require_once __DIR__ . '/delete_news.inc.php';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/save_news.inc.php';
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Новостная лента</title>
+	<meta charset="utf-8">
+</head>
+<body>
+  <h1>Последние новости</h1>
+
+  <?php if ($errMsg !== ''): ?>
+    <div style="color: red; font-weight: bold;"><?= htmlspecialchars($errMsg) ?></div>
+  <?php endif; ?>
+
+  <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
+    Заголовок новости:<br>
+    <input type="text" name="title"><br>
+    Выберите категорию:<br>
+    <select name="category">
+      <?php foreach ($news as $id => $name): ?>
+        <option value="<?= $id ?>"><?= htmlspecialchars($name) ?></option>
+      <?php endforeach; ?>
+    </select>
+    <br />
+    Текст новости:<br>
+    <textarea name="description" cols="50" rows="5"></textarea><br>
+    Источник:<br>
+    <input type="text" name="source"><br>
+    <br>
+    <input type="submit" value="Добавить!">
+  </form>
+
+  <?php require_once __DIR__ . '/get_news.inc.php'; ?>
+
+  <hr>
+  <h2>UML-диаграмма классов</h2>
+  <img src="uml.png" alt="Диаграмма классов приложения news" style="max-width: 100%; height: auto;">
+</body>
+</html>
