@@ -110,6 +110,10 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=6">Лабораторная работа №6 — PHP Data Objects</a>
     </div>
 
+    <div class="card">
+        <a href="/?lab=7">Лабораторная работа №7 — Сессии и CAPTCHA</a>
+    </div>
+
     <div class="student-info">
         Студент: Семенова Анжелика<br>
         Группа: 31 ПМ
@@ -228,6 +232,13 @@ $lab = $_GET['lab'] ?? null;
 
     <div class="card">
         <a href="/lab6/rss.xml" target="_blank">Файл rss.xml</a>
+    </div>
+
+    <?php elseif ($lab === '7'): ?>
+    <h1>Лабораторная работа №7 — Сессии и CAPTCHA</h1>
+
+    <div class="card">
+        <a href="/lab7/registration.php">Страница регистрации с проверочной картинкой</a>
     </div>
 
 
