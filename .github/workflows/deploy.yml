@@ -2,8 +2,8 @@ name: Deploy to Sprinthost
 
 on:
   push:
-  branches:
-    - main
+    branches:
+      - main
 
   workflow_dispatch:
 
@@ -16,32 +16,33 @@ concurrency:
 
 jobs:
   deploy:
-  name: Upload website via FTP
-  runs-on: ubuntu-latest
-  
-  steps:
-  - name: Checkout repository
-  uses: actions/checkout@v6
-  with:
-    persist-credentials: false
-  name: Deploy website
-  uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-  with:
-  server: ${{ secrets.FTP_USERNAME }}.xsph.ru
-  username: ${{ secrets.FTP_USERNAME }}
-  password: ${{ secrets.FTP_PASSWORD }}
+    name: Upload website via FTP
+    runs-on: ubuntu-latest
 
-  protocol: ftp
-  port: 21
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
-  local-dir: ./
+      - name: Deploy website
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_USERNAME }}.xsph.ru
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
 
-  server-dir: ./domains/${{ secrets.FTP_USERNAME }}.xsph.ru/public_html/
+          protocol: ftp
+          port: 21
 
-  exclude: |
-    **/.git*
-    **/.git*/**
-    **/node_modules/**
-    **/.env
-    **/.env.*
-    **/README*
+          local-dir: ./
+
+          server-dir: ./domains/${{ secrets.FTP_USERNAME }}.xsph.ru/public_html/
+
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/.env.*
+            **/README*
