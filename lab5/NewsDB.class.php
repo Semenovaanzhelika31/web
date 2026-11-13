@@ -126,7 +126,13 @@ class NewsDB implements INewsDB, IteratorAggregate
 
         $result = $stmt->execute();
 
-        return $result !== false;
+        if ($result === false) {
+            return false;
+        }
+
+        $this->createRss();
+
+        return true;
     }
 
     private function createRss(): void
