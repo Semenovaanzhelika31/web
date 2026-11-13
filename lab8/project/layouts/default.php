@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/project/webroot/styles.css">
+		<link rel="stylesheet" href="<?= BASE_PATH ?>/project/webroot/styles.css">
 		<title><?= $title ?></title>
 	</head>
 	<body>
@@ -22,7 +22,7 @@
 		</div>
 		<footer>
 			футер сайта
-			<img src="/project/webroot/logo.svg" alt="Картинка" width="40" height="40">
+			<img src="<?= BASE_PATH ?>/project/webroot/logo.svg" alt="Картинка" width="40" height="40">
 		</footer>
 	</body>
 </html>
