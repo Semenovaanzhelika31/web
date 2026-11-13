@@ -8,7 +8,7 @@
 		<td><?= $product['price'] ?></td>
 		<td><?= $product['quantity'] ?></td>
 		<td><?= $product['category'] ?></td>
-		<td><a href="/product/<?= $id ?>/">подробнее</a></td>
+		<td><a href="<?= BASE_PATH ?>/product/<?= $id ?>/">подробнее</a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
