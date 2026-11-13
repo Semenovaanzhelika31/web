@@ -3,13 +3,16 @@
 	
 	error_reporting(E_ALL);
 	ini_set('display_errors', 'on');
-
+	
 	$siteRoot = realpath($_SERVER['DOCUMENT_ROOT']);
 	$appRoot  = realpath(__DIR__);
-	define('BASE_PATH', rtrim(str_replace('\\', '/', substr($appRoot, strlen($siteRoot))), '/'));
-	define('BASE_URL',  rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/'));
+	$base = rtrim(str_replace('\\', '/', substr($appRoot, strlen($siteRoot))), '/');
+	if ($base === '' && PHP_SAPI !== 'cli-server') {
+		$base = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
+	}
+	define('BASE_PATH', $base);
 	$_SERVER['DOCUMENT_ROOT'] = $appRoot;
-
+	
 	$uri = strtok($_SERVER['REQUEST_URI'], '?');
 	if (BASE_PATH !== '' && strpos($uri, BASE_PATH) === 0) {
 		$uri = substr($uri, strlen(BASE_PATH));
