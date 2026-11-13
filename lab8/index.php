@@ -4,18 +4,11 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 'on');
 	
-	/*
-		Фреймворк может лежать не только в корне сайта, но и в подпапке (например, /lab8/).
-		BASE_PATH - префикс подпапки ('' для корня, '/lab8' для подпапки).
-		Дальше DOCUMENT_ROOT указывает на папку самого фреймворка,
-		поэтому все пути внутри фреймворка остаются прежними.
-	*/
 	$siteRoot = realpath($_SERVER['DOCUMENT_ROOT']);
 	$appRoot  = realpath(__DIR__);
 	define('BASE_PATH', rtrim(str_replace('\\', '/', substr($appRoot, strlen($siteRoot))), '/'));
 	$_SERVER['DOCUMENT_ROOT'] = $appRoot;
 	
-	// адрес для роутера без префикса подпапки и без GET-параметров
 	$uri = strtok($_SERVER['REQUEST_URI'], '?');
 	if (BASE_PATH !== '' && strpos($uri, BASE_PATH) === 0) {
 		$uri = substr($uri, strlen(BASE_PATH));
