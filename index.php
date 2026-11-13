@@ -5,6 +5,20 @@ declare(strict_types=1);
 require __DIR__ . '/lab4/NumbersSquared.php';
 
 $lab = $_GET['lab'] ?? null;
+
+// Адрес MVC-фреймворка (лаба 8).
+$host      = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? '';
+$codespace = getenv('CODESPACE_NAME');
+$domain    = getenv('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN');
+
+if (strpos($host, '-3000.') !== false) {
+    // Codespaces: тот же адрес, но порт 3001
+    $lab8Url = 'https://' . str_replace('-3000.', '-3001.', $host) . '/';
+} elseif ($codespace && $domain) {
+    $lab8Url = "https://{$codespace}-3001.{$domain}/";
+} else {
+    $lab8Url = 'http://f1316434.xsph.ru/';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -114,6 +128,10 @@ $lab = $_GET['lab'] ?? null;
         <a href="/?lab=7">Лабораторная работа №7 — Сессии и CAPTCHA</a>
     </div>
 
+    <div class="card">
+        <a href="/?lab=8">Лабораторная работа №8 — MVC-фреймворк</a>
+    </div>
+
     <div class="student-info">
         Студент: Семенова Анжелика<br>
         Группа: 31 ПМ
@@ -218,8 +236,10 @@ $lab = $_GET['lab'] ?? null;
     <div class="card">
         <a href="/lab4/news/uml.png" target="_blank">UML-диаграмма классов приложения news (дополненная)</a>
     </div>
-    
-    <?php elseif ($lab === '5'): ?>
+
+    <a class="back" href="/">Вернуться на главную</a>
+
+<?php elseif ($lab === '5'): ?>
     <h1>Лабораторная работа №5 — Работа с XML (RSS)</h1>
 
     <div class="card">
@@ -230,8 +250,9 @@ $lab = $_GET['lab'] ?? null;
         <a href="/lab5/rss.xml" target="_blank">Файл rss.xml</a>
     </div>
 
+    <a class="back" href="/">Вернуться на главную</a>
 
-    <?php elseif ($lab === '6'): ?>
+<?php elseif ($lab === '6'): ?>
     <h1>Лабораторная работа №6 — PHP Data Objects</h1>
 
     <div class="card">
@@ -242,13 +263,37 @@ $lab = $_GET['lab'] ?? null;
         <a href="/lab6/rss.xml" target="_blank">Файл rss.xml</a>
     </div>
 
-    <?php elseif ($lab === '7'): ?>
+    <a class="back" href="/">Вернуться на главную</a>
+
+<?php elseif ($lab === '7'): ?>
     <h1>Лабораторная работа №7 — Сессии и CAPTCHA</h1>
 
     <div class="card">
         <a href="/lab7/registration.php">Страница регистрации с проверочной картинкой</a>
     </div>
 
+    <a class="back" href="/">Вернуться на главную</a>
+
+<?php elseif ($lab === '8'): ?>
+    <h1>Лабораторная работа №8 — MVC-фреймворк</h1>
+
+    <h2>Контроллеры, действия и роуты</h2>
+    <div class="card"><a href="<?= $lab8Url ?>test/act1/">TestController: act1</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>nums/1/2/3/">NumController: сумма 1 + 2 + 3</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>user/3/">UserController: юзер по id</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>user/3/name/">UserController: поле юзера</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>user/all/">UserController: все юзеры</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>user/first/2/">UserController: первые N юзеров</a></div>
+
+    <h2>Представления и шаблоны</h2>
+    <div class="card"><a href="<?= $lab8Url ?>product/1/">Product: один продукт</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>products/all/">Product: все продукты (таблица)</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>my-page/1/">Page: страница с тайтлом</a></div>
+
+    <h2>Модели и база данных</h2>
+    <div class="card"><a href="<?= $lab8Url ?>page/test/">Page: проверка модели (var_dump)</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>pages/">Page: все страницы из базы</a></div>
+    <div class="card"><a href="<?= $lab8Url ?>db-products/">Product: все продукты из базы</a></div>
 
     <a class="back" href="/">Вернуться на главную</a>
 
