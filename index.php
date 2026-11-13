@@ -17,7 +17,7 @@ if (strpos($host, '-3000.') !== false) {
 } elseif ($codespace && $domain) {
     $lab8Url = "https://{$codespace}-3001.{$domain}/";
 } else {
-    $lab8Url = 'http://f1316434.xsph.ru/';
+    $lab8Url = 'http://f1316434.xsph.ru/lab8/';
 }
 ?>
 <!DOCTYPE html>
