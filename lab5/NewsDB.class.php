@@ -9,7 +9,7 @@ class NewsDB implements INewsDB, IteratorAggregate
     const DB_NAME = 'news.db';
     const RSS_NAME = 'rss.xml';
     const RSS_TITLE = 'Последние новости';
-    const RSS_LINK = 'http://localhost/lab3/news/news.php';
+    const RSS_LINK = 'http://f1316434.xsph.ru/lab5/news.php';
 
     private SQLite3 $_db;
     private array $items = [];
@@ -53,9 +53,7 @@ class NewsDB implements INewsDB, IteratorAggregate
 
     private function getCategories(): void
     {
-        $sql = "SELECT id, name FROM category";
-
-        $result = $this->_db->query($sql);
+        $result = $this->_db->query("SELECT id, name FROM category");
 
         if ($result === false) {
             return;
@@ -151,8 +149,13 @@ class NewsDB implements INewsDB, IteratorAggregate
         $channel = $dom->createElement('channel');
         $rss->appendChild($channel);
 
-        $channel->appendChild($dom->createElement('title', self::RSS_TITLE));
-        $channel->appendChild($dom->createElement('link', self::RSS_LINK));
+        $title = $dom->createElement('title');
+        $title->appendChild($dom->createTextNode(self::RSS_TITLE));
+        $channel->appendChild($title);
+
+        $link = $dom->createElement('link');
+        $link->appendChild($dom->createTextNode(self::RSS_LINK));
+        $channel->appendChild($link);
 
         $news = $this->getNews();
 
@@ -160,29 +163,23 @@ class NewsDB implements INewsDB, IteratorAggregate
             foreach ($news as $row) {
                 $item = $dom->createElement('item');
 
-                $title = $dom->createElement('title');
-                $title->appendChild($dom->createTextNode((string)$row['title']));
+                $itemTitle = $dom->createElement('title');
+                $itemTitle->appendChild($dom->createTextNode((string)$row['title']));
 
-                $link = $dom->createElement('link');
-                $link->appendChild(
-                    $dom->createTextNode(self::RSS_LINK . '?id=' . $row['id'])
-                );
+                $itemLink = $dom->createElement('link');
+                $itemLink->appendChild($dom->createTextNode(self::RSS_LINK));
 
                 $description = $dom->createElement('description');
-                $description->appendChild(
-                    $dom->createCDATASection((string)$row['description'])
-                );
+                $description->appendChild($dom->createCDATASection((string)$row['description']));
 
                 $pubDate = $dom->createElement('pubDate');
-                $pubDate->appendChild(
-                    $dom->createTextNode(date('r', (int)$row['datetime']))
-                );
+                $pubDate->appendChild($dom->createTextNode(date('r', (int)$row['datetime'])));
 
                 $category = $dom->createElement('category');
                 $category->appendChild($dom->createTextNode((string)$row['category']));
 
-                $item->appendChild($title);
-                $item->appendChild($link);
+                $item->appendChild($itemTitle);
+                $item->appendChild($itemLink);
                 $item->appendChild($description);
                 $item->appendChild($pubDate);
                 $item->appendChild($category);
