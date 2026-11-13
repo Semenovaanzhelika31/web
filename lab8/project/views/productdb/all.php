@@ -7,7 +7,7 @@
 		<td><?= $product['name'] ?></td>
 		<td><?= $product['price'] ?></td>
 		<td><?= $product['quantity'] ?></td>
-		<td><a href="/db-product/<?= $product['id'] ?>/">подробнее</a></td>
+		<td><a href="<?= BASE_PATH ?>/db-product/<?= $product['id'] ?>/">подробнее</a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
