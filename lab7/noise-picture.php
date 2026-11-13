@@ -12,6 +12,8 @@ for ($i = 0; $i < $length; $i++) {
 $_SESSION['captcha'] = $str;
 
 $img = imagecreatefromjpeg(__DIR__ . '/noise.jpg');
+$width  = imagesx($img);
+$height = imagesy($img);
 
 $fonts = array_values(array_filter([
     __DIR__ . '/fonts/bellb.ttf',
@@ -22,24 +24,38 @@ if (!$fonts) {
     error_log('noise-picture: шрифты не найдены в ' . __DIR__ . '/fonts');
 }
 
-$x = 20;
-$y = 40;
+$margin = 3;                                   
+$step   = ($width - 2 * $margin) / $length;    
+
 for ($i = 0; $i < $length; $i++) {
     $color = imagecolorallocate($img, random_int(0, 120), random_int(0, 120), random_int(0, 120));
-    $size = random_int(18, 30);
-    $angle = random_int(-25, 25);
+    $angle = random_int(-20, 20);
+    $char  = $str[$i];
 
-    if ($fonts) {
-        $font = $fonts[array_rand($fonts)];
-        $res = imagettftext($img, $size, $angle, $x, $y, $color, $font, $str[$i]);
-        if ($res === false) {
-            error_log("imagettftext не отработала для шрифта $font");
-        }
-    } else {
-        imagestring($img, 5, $x, $y - 15, $str[$i], $color);
+    if (!$fonts) {
+        imagestring($img, 5, (int)($margin + $i * $step), 10, $char, $color);
+        continue;
     }
 
-    $x += 40;
+    $font = $fonts[array_rand($fonts)];
+
+    $size = random_int(18, 30);
+    do {
+        $box = imagettfbbox($size, $angle, $font, $char);
+        $minX = min($box[0], $box[2], $box[4], $box[6]);
+        $maxX = max($box[0], $box[2], $box[4], $box[6]);
+        $minY = min($box[1], $box[3], $box[5], $box[7]);
+        $maxY = max($box[1], $box[3], $box[5], $box[7]);
+        $glyphW = $maxX - $minX;
+        $glyphH = $maxY - $minY;
+        $fits = $glyphH <= $height - 2 * $margin && $glyphW <= $step;
+    } while (!$fits && --$size >= 8);
+
+    $x = (int)($margin + $i * $step + ($step - $glyphW) / 2 - $minX);
+    $freeY = max(0, $height - 2 * $margin - $glyphH);
+    $y = (int)($margin - $minY + random_int(0, (int)$freeY));
+
+    imagettftext($img, $size, $angle, $x, $y, $color, $font, $char);
 }
 
 header('Content-Type: image/jpeg');
