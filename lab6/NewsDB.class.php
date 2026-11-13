@@ -9,7 +9,7 @@ class NewsDB implements INewsDB, IteratorAggregate
     const DB_NAME = 'news.db';
     const RSS_NAME = 'rss.xml';
     const RSS_TITLE = 'Последние новости';
-    const RSS_LINK = 'https://fuzzy-zebra-r4wg4r745797cp5v-3000.app.github.dev/lab6/news.php';
+    const RSS_LINK = 'http://f1316434.xsph.ru/lab6/news.php';
 
     private PDO $_db;
     private array $items = [];
@@ -18,7 +18,6 @@ class NewsDB implements INewsDB, IteratorAggregate
     {
         $dbPath = __DIR__ . '/' . self::DB_NAME;
 
-        // база считается новой, если файла нет или он нулевой длины
         $isNew = !file_exists($dbPath) || filesize($dbPath) === 0;
 
         try {
