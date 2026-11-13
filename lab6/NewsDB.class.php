@@ -138,12 +138,14 @@ class NewsDB implements INewsDB, IteratorAggregate
         try {
             $id = (int)$id;
             $this->_db->exec("DELETE FROM msgs WHERE id = $id");
-
-            return true;
         } catch (PDOException $e) {
             $this->logError($e);
             return false;
         }
+
+        $this->createRss();
+
+        return true;
     }
 
     private function createRss(): void
