@@ -3,13 +3,13 @@
 	
 	error_reporting(E_ALL);
 	ini_set('display_errors', 'on');
-	
 
 	$siteRoot = realpath($_SERVER['DOCUMENT_ROOT']);
 	$appRoot  = realpath(__DIR__);
 	define('BASE_PATH', rtrim(str_replace('\\', '/', substr($appRoot, strlen($siteRoot))), '/'));
+	define('BASE_URL',  rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/'));
 	$_SERVER['DOCUMENT_ROOT'] = $appRoot;
-	
+
 	$uri = strtok($_SERVER['REQUEST_URI'], '?');
 	if (BASE_PATH !== '' && strpos($uri, BASE_PATH) === 0) {
 		$uri = substr($uri, strlen(BASE_PATH));
@@ -37,7 +37,7 @@
 				throw new \Exception("Класс $class не найден в файле $path. Проверьте правильность написания имени класса внутри указанного файла.");
 			}
 		} else {
-			throw new \Exception("Для класса $class не найден файл $path. Проверьте наличие файла по указанному пути. Убедитесь, что пространство имен вашего класса совпадает с тем, которое пытается найти фреймворк для данного класса.");
+			throw new \Exception("Для класса $class не найден файл $path. Проверьте наличие файла по указанному пути. Убедитесь, что пространство имен вашего класса совпадает с тем, которое пытается найти фреймворк для данного класса. Например, вы создаете класса модели, но забыли заюзать ее через use. В этом случае вы пытаетесь вызвать класс модели в пространстве имен контроллера, а такого файла нет.");
 		}
 	});
 	
