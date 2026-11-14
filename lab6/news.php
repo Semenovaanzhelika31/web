@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 	<title>Новостная лента</title>
 	<meta charset="utf-8">
@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div style="color: red; font-weight: bold;"><?= htmlspecialchars($errMsg) ?></div>
   <?php endif; ?>
 
+  <h2>Добавить новость</h2>
   <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
     Заголовок новости:<br>
     <input type="text" name="title"><br>
@@ -44,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" value="Добавить!">
   </form>
 
+  <h2>Лента новостей</h2>
   <?php require_once __DIR__ . '/get_news.inc.php'; ?>
 
   <p><a href="rss.xml" target="_blank">RSS-лента</a></p>
