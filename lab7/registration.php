@@ -14,11 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $message = 'Неверно: введённая строка не совпадает с изображением.';
     }
+
+    unset($_SESSION['captcha']);
+} else {
     unset($_SESSION['captcha']);
 }
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="ru">
 
 <head>
   <meta charset="utf-8">
